@@ -1,0 +1,55 @@
+name: Build CV and Publications PDFs
+
+on:
+  push:
+    paths:
+      - 'CV/**.tex'
+      - 'CV/**.cls'
+      - '.github/workflows/build_cv.yml'
+  workflow_dispatch:
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Resume_for_Frehers.tex
+          working_directory: CV/
+          latexmk_use_lualatex: false
+          latexmk_use_xelatex: false
+          args: "-pdf -file-line-error -interaction=nonstopmode"
+
+      - name: Compile Publications List
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Publications_Wrapper.tex
+          working_directory: CV/
+          latexmk_use_lualatex: false
+          latexmk_use_xelatex: false
+          args: "-pdf -file-line-error -interaction=nonstopmode"
+
+      - name: Move PDFs to assets/docs
+        run: |
+          mkdir -p assets/docs
+          mv CV/Resume_for_Frehers.pdf assets/docs/CV_Sergei_Chuprov.pdf
+          mv CV/Publications_Wrapper.pdf assets/docs/Publications_Sergei_Chuprov.pdf
+
+      - name: Commit and Push PDFs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/docs/CV_Sergei_Chuprov.pdf assets/docs/Publications_Sergei_Chuprov.pdf
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update CV and Publications PDFs [skip ci]"
+            git push
+          fi
