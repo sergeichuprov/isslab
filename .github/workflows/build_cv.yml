@@ -20,7 +20,7 @@ jobs:
       - name: Compile CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: Resume_for_Frehers.tex
+          root_file: CV.tex
           working_directory: CV/
           latexmk_use_lualatex: false
           latexmk_use_xelatex: false
@@ -38,7 +38,7 @@ jobs:
       - name: Move PDFs to assets/docs
         run: |
           mkdir -p assets/docs
-          mv CV/Resume_for_Frehers.pdf assets/docs/CV_Sergei_Chuprov.pdf
+          mv CV/CV.pdf assets/docs/CV_Sergei_Chuprov.pdf
           mv CV/Publications_Wrapper.pdf assets/docs/Publications_Sergei_Chuprov.pdf
 
       - name: Commit and Push PDFs
