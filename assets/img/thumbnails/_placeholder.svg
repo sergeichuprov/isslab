@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" preserveAspectRatio="xMidYMid meet" role="img" aria-label="thumbnail placeholder">
+  <rect width="140" height="100" fill="#eef3f8"/>
+  <g fill="#9bb4cc" stroke="#9bb4cc" stroke-width="1.5" stroke-linejoin="round">
+    <rect x="32" y="32" width="76" height="48" rx="4" fill="none"/>
+    <circle cx="50" cy="48" r="5" fill="#9bb4cc"/>
+    <polyline points="38,75 60,55 76,68 92,50 102,75" fill="none"/>
+  </g>
+  <text x="70" y="92" fill="#7a8fa3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" text-anchor="middle">thumbnail</text>
+</svg>
