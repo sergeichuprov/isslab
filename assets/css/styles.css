@@ -500,45 +500,123 @@ footer {
 
 @media print, screen and (max-width: 720px) {
   body {
-    word-wrap:break-word;
+    padding: 24px;
+    word-wrap: break-word;
   }
 
   section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0;
+    padding: 20px 0;
+    margin: 0 0 20px;
   }
+
   header {
-    padding:0;
+    padding: 0;
   }
 
   header ul, header p.view {
-    position:static;
+    position: static;
+  }
+
+  header img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  /* Tighten collapsible content padding so text doesn't get cramped */
+  .collapsible-section > ul,
+  .collapsible-section > ol {
+    padding-left: 32px;
+    padding-right: 10px;
+  }
+
+  .collapsible-section > p,
+  .collapsible-section > h2,
+  .collapsible-section > h3,
+  .collapsible-section > h4 {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .collapsible-section > summary {
+    padding: 10px 12px 10px 28px;
+  }
+
+  .collapsible-section > summary::before {
+    left: 10px;
+  }
+
+  /* News/Projects scroll regions shorter on phones */
+  div[aria-labelledby="news-heading"] {
+    height: 240px;
   }
 
   pre, code {
-    word-wrap:normal;
+    word-wrap: normal;
   }
 }
 
 @media print, screen and (max-width: 480px) {
   body {
-    padding:15px;
-  }
-  
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
-  }
-  header ul {
-    width:99%;
+    padding: 14px;
+    font-size: 15px;  /* slightly larger base for readability on small screens */
   }
 
-  header li, header ul li + li + li {
-    width:33%;
+  section {
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0;
+    padding: 16px 0;
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  header img {
+    max-width: 160px;
+  }
+
+  /* Stack contact icons + links cleanly on tiny screens */
+  header ul.contact-list li {
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Tighter collapsible boxes */
+  .collapsible-section > summary {
+    padding: 10px 10px 10px 26px;
+  }
+
+  .collapsible-section > ul,
+  .collapsible-section > ol {
+    padding-left: 24px;
+    padding-right: 6px;
+  }
+
+  /* Make the project link clusters wrap onto multiple lines instead of overflowing */
+  .project-text b {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Smaller venue-rank chips so they don't dominate the line */
+  .venue-rank {
+    font-size: 0.78em;
+    padding: 0 4px;
+  }
+
+  /* Shrink the decorative tilde so it doesn't take so much vertical space */
+  .header-divider {
+    font-size: 22px;
+    margin: 1px 0;
   }
 }
 
